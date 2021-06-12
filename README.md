@@ -3,7 +3,7 @@
 
 ![delivery-transport-pngrepo-com](https://user-images.githubusercontent.com/75169636/121786093-5430b580-cbf0-11eb-8852-e940fecc9732.png)
 
-[Always-On-Time-Delivery](https://github.com/RynnDesmond/Always-On-Time-Delivery.git) simulates the delivery process by finding the routes using different algorithm.
+[Always-On-Time-Delivery](https://github.com/RynnDesmond/Always-On-Time-Delivery.git) simulates the delivery process by finding the routes using different algorithms.
 
 ## Contributors
     - Desmond Tee Yu Wei
