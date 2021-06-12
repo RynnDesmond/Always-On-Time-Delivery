@@ -1,0 +1,15 @@
+.button {
+    -fx-cursor: hand;
+    -fx-background-color: #FFB100;
+    -fx-text-fill: #ffffff;
+    -fx-text-alignment: center;
+}
+
+.button:pressed {
+    -fx-effect: dropshadow( three-pass-box ,#FFFF9B, 10, 0.0 , 0 , 0 );
+}
+
+.button:hover {
+    -fx-background-color:  #FFDF84;
+    -fx-text-fill: #FF9D18;
+}

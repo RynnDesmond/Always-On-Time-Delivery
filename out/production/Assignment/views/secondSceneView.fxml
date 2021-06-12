@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../res/styles/style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SecondSceneController">
+   <children>
+      <Text fill="#184dac" layoutX="225.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ROUTE SEARCHING" wrappingWidth="349.0562744140625">
+         <font>
+            <Font name="Arial Bold" size="35.0" />
+         </font>
+      </Text>
+      <Text layoutX="37.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Node(s) : ">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="37.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Maximum Capacity of All Vehicles :">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="37.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Nodes:">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="20.0" />
+         </font>
+      </Text>
+      <Label fx:id="numOfNode" layoutX="244.0" layoutY="127.0" text="Label">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Label fx:id="maxCap" layoutX="385.0" layoutY="177.0" text="Label">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font></Label>
+      <Button layoutX="37.0" layoutY="514.0" mnemonicParsing="false" onAction="#basicOnAction" prefHeight="31.0" prefWidth="142.0" stylesheets="@../res/styles/firstButtonStyle.css" text="Basic Simulation" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="197.0" layoutY="514.0" mnemonicParsing="false" onAction="#greedyOnAction" prefHeight="31.0" prefWidth="124.0" stylesheets="@../res/styles/firstButtonStyle.css" text="Greedy Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="341.0" layoutY="514.0" mnemonicParsing="false" onAction="#mctsOnAction" prefHeight="31.0" prefWidth="72.0" stylesheets="@../res/styles/firstButtonStyle.css" text="MCTS" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="432.0" layoutY="514.0" mnemonicParsing="false" onAction="#bestOnAction" prefHeight="31.0" prefWidth="142.0" stylesheets="@../res/styles/firstButtonStyle.css" text="Best First Search" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="699.0" layoutY="433.0" mnemonicParsing="false" onAction="#backOnAction" prefHeight="24.0" prefWidth="65.0" stylesheets="@../res/styles/backButtonStyle.css" text="BACK" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <TableView fx:id="table" layoutX="150.0" layoutY="226.0" prefHeight="220.0" prefWidth="447.0">
+        <columns>
+          <TableColumn fx:id="nodeCl" prefWidth="107.20001220703125" text="ID" />
+          <TableColumn prefWidth="107.20001220703125" text="x-coordinate" fx:id="xCl" />
+            <TableColumn fx:id="yCl" prefWidth="107.20001220703125" text="y-coordinate" />
+            <TableColumn fx:id="demandsCl" prefWidth="121.60003662109375" text="Demand Size" />
+        </columns>
+      </TableView>
+   </children>
+</Pane>
