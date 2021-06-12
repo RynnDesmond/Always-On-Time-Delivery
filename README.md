@@ -1,7 +1,7 @@
 # Always-On-Time-Delivery
 ‘Always On Time’ Sdn Bhd
 
-![](https://github.com/RynnDesmond/Always-On-Time-Delivery/src/res/images/Untitled-2.png?raw=true)
+![delivery-transport-pngrepo-com](https://user-images.githubusercontent.com/75169636/121786093-5430b580-cbf0-11eb-8852-e940fecc9732.png)
 
 [Always-On-Time-Delivery](https://github.com/RynnDesmond/Always-On-Time-Delivery.git) simulates the delivery process by finding the routes using different algorithm.
 
