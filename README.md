@@ -1,9 +1,9 @@
 # Always-On-Time-Delivery
 ‘Always On Time’ Sdn Bhd
 
-![alt text](https://github.com/RynnDesmond/Always-On-Time-Delivery/src/res/images/Untitled-2.png)
-
 [Always-On-Time-Delivery](https://github.com/RynnDesmond/Always-On-Time-Delivery.git) simulates the delivery process by finding the routes using different algorithm.
+
+![](https://github.com/RynnDesmond/Always-On-Time-Delivery/src/res/images/Untitled-2.png)
 
 ## Contributors
     - Desmond Tee Yu Wei
