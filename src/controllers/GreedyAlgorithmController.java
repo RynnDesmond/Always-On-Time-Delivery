@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.stage.Stage;
@@ -32,20 +33,20 @@ public class GreedyAlgorithmController implements Initializable {
     @FXML
     private Label timerLabel;
 
+    @FXML
+    private Button nextButton;
+
     private Tour a_tour;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Visibility of button(Not shown)
+        nextButton.setVisible(false);
+        //Color of the progress bar
         progressBar.setStyle("-fx-accent: #00FF00;");
-
         //Create task
-        Greedy taskGreedy = new Greedy(FirstSceneController.node, FirstSceneController.maxCapacity) {
-            //Method called in task
-            @Override
-            protected Tour call() {
-                return search();
-            }
-        };
+        Greedy taskGreedy = new Greedy(FirstSceneController.node, FirstSceneController.maxCapacity);
+
         //When task succeeded, get the return value(a_tour)
         taskGreedy.setOnSucceeded(event -> a_tour = taskGreedy.getValue());
         //property of progress bar updates with task progress
@@ -202,7 +203,7 @@ public class GreedyAlgorithmController implements Initializable {
         }
 
         /**
-         * Task call
+         * Override task call
          *
          * @return a_tour :Object of class Tour
          */
@@ -219,9 +220,11 @@ public class GreedyAlgorithmController implements Initializable {
             if (timer < 60) {
                 System.out.println(" (Work done!)");
                 infoLabel.setText("Work done!");
+                nextButton.setVisible(true);    //Visibility of button(Shown)
             } else {
                 System.out.println(" (Searching is forced to stop!)");
                 infoLabel.setText("Searching is forced to stop!");
+                nextButton.setVisible(true);    //Visibility of button(Shown)
             }
         }
     }

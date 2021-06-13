@@ -32,8 +32,8 @@
             <Font name="Arial Rounded MT Bold" size="20.0" />
          </font>
       </Text>
-      <Circle fill="LIGHTGREEN" layoutX="452.0" layoutY="535.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
-      <Circle fill="SALMON" layoutX="542.0" layoutY="535.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fill="SALMON" layoutX="452.0" layoutY="535.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
+      <Circle fill="LIGHTGREEN" layoutX="542.0" layoutY="535.0" radius="7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" />
       <Text layoutX="468.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Depot">
          <font>
             <Font name="System Bold" size="16.0" />

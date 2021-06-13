@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.scene.control.Button;
 import models.Customer;
 import models.Tour;
 import models.Vehicle;
@@ -32,23 +33,20 @@ public class MCTSAlgorithmController implements Initializable {
     @FXML
     private Label timerLabel;
 
-    private Tour a_tour;
+    @FXML
+    private Button nextButton;
 
-    private final int level = 3;
-    private final int iterations = 100;
+    private Tour a_tour;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Visibility of button(Not shown)
+        nextButton.setVisible(false);
+        //Color of the progress bar
         progressBar.setStyle("-fx-accent: #00FF00;");
-
         //Create task
-        MCTS taskMCTS = new MCTS(FirstSceneController.node, FirstSceneController.maxCapacity) {
-            //Method called in task
-            @Override
-            protected Tour call() {
-                return search(level, iterations);
-            }
-        };
+        MCTS taskMCTS = new MCTS(FirstSceneController.node, FirstSceneController.maxCapacity);
+
         //When task succeeded, get the return value(a_tour)
         taskMCTS.setOnSucceeded(event -> a_tour = taskMCTS.getValue());
         //property of progress bar updates with task progress
@@ -300,12 +298,14 @@ public class MCTSAlgorithmController implements Initializable {
         }
 
         /**
-         * Task call
+         * Override task call
          *
          * @return a_tour :Object of class Tour
          */
         @Override
         protected Tour call() {
+            int level = 3;
+            int iterations = 100;
             return search(level, iterations);
         }
 
@@ -317,9 +317,11 @@ public class MCTSAlgorithmController implements Initializable {
             if (timer < 60) {
                 System.out.println(" (Work done!)");
                 infoLabel.setText("Work done!");
+                nextButton.setVisible(true);    //Visibility of button(Shown)
             } else {
                 System.out.println(" (Searching is forced to stop!)");
                 infoLabel.setText("Searching is forced to stop!");
+                nextButton.setVisible(true);    //Visibility of button(Shown)
             }
         }
     }

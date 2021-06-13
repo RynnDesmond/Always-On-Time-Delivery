@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.application.Platform;
+import javafx.scene.input.MouseEvent;
 import models.Tour;
 import models.Vehicle;
 import javafx.animation.SequentialTransition;
@@ -61,6 +62,12 @@ public class BestFirstGraphController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Create zoomable pane for displaying graph
         ZoomableScrollPane zoomPane = new ZoomableScrollPane(content_group);
+
+        //Make the zoomable pane draggable
+        ZoomableScrollPane.SceneGestures sceneGestures = new ZoomableScrollPane.SceneGestures(zoomPane);
+        zoomPane.addEventFilter(MouseEvent.MOUSE_PRESSED, sceneGestures.getOnMousePressedEventHandler());
+        zoomPane.addEventFilter(MouseEvent.MOUSE_DRAGGED, sceneGestures.getOnMouseDraggedEventHandler());
+
         //Properties of zoomable pane
         zoomPane.setMinSize(650, 350);
         zoomPane.setLayoutX(74);
@@ -74,6 +81,7 @@ public class BestFirstGraphController implements Initializable {
         capacityCl.setCellValueFactory(new PropertyValueFactory<>("occupied"));
         costCl.setCellValueFactory(new PropertyValueFactory<>("routeCost"));
 
+        //Lines to run after initialization
         Platform.runLater(() -> {
             setLine(a_tour);
             setNode();
@@ -178,6 +186,7 @@ public class BestFirstGraphController implements Initializable {
         content_group.getChildren().addAll(lineList);
     }
 
+    //BACK button
     public void backOnAction(ActionEvent event) throws IOException {
         Parent secondScene = FXMLLoader.load(getClass().getResource("/views/secondSceneView.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow(); // Obtain the current stage

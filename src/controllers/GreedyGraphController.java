@@ -1,6 +1,7 @@
 package controllers;
 
 import javafx.application.Platform;
+import javafx.scene.input.MouseEvent;
 import models.Tour;
 import models.Vehicle;
 import javafx.animation.SequentialTransition;
@@ -60,6 +61,12 @@ public class GreedyGraphController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Create zoomable pane for displaying graph
         ZoomableScrollPane zoomPane = new ZoomableScrollPane(content_group);
+
+        //Make the zoomable pane draggable
+        ZoomableScrollPane.SceneGestures sceneGestures = new ZoomableScrollPane.SceneGestures(zoomPane);
+        zoomPane.addEventFilter(MouseEvent.MOUSE_PRESSED, sceneGestures.getOnMousePressedEventHandler());
+        zoomPane.addEventFilter(MouseEvent.MOUSE_DRAGGED, sceneGestures.getOnMouseDraggedEventHandler());
+
         //Properties of zoomable pane
         zoomPane.setMinSize(650, 350);
         zoomPane.setLayoutX(74);
@@ -73,6 +80,7 @@ public class GreedyGraphController implements Initializable {
         capacityCl.setCellValueFactory(new PropertyValueFactory<>("occupied"));
         costCl.setCellValueFactory(new PropertyValueFactory<>("routeCost"));
 
+        //Lines to run after initialization
         Platform.runLater(() -> {
             setLine(a_tour);
             setNode();

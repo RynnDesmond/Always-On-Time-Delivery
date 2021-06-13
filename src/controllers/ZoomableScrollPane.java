@@ -1,11 +1,13 @@
 package controllers;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 public class ZoomableScrollPane extends ScrollPane {
@@ -77,5 +79,71 @@ public class ZoomableScrollPane extends ScrollPane {
         Bounds updatedInnerBounds = zoomNode.getBoundsInLocal();
         this.setHvalue((valX + adjustment.getX()) / (updatedInnerBounds.getWidth() - viewportBounds.getWidth()));
         this.setVvalue((valY + adjustment.getY()) / (updatedInnerBounds.getHeight() - viewportBounds.getHeight()));
+    }
+
+    /**
+     * Mouse drag context used for scene and nodes.
+     */
+    static class DragContext {
+        double mouseAnchorX;
+        double mouseAnchorY;
+
+        double translateAnchorX;
+        double translateAnchorY;
+    }
+
+    /**
+     * Listeners for making the scene's canvas draggable
+     */
+    static class SceneGestures {
+
+        private final DragContext sceneDragContext = new DragContext();
+
+        ZoomableScrollPane pane;
+
+        //Constructor
+        public SceneGestures(ZoomableScrollPane pane) {
+            this.pane = pane;
+        }
+
+        public EventHandler<MouseEvent> getOnMousePressedEventHandler() {
+            return onMousePressedEventHandler;
+        }
+
+        public EventHandler<MouseEvent> getOnMouseDraggedEventHandler() {
+            return onMouseDraggedEventHandler;
+        }
+
+        private final EventHandler<MouseEvent> onMousePressedEventHandler = new EventHandler<>() {
+
+            public void handle(MouseEvent event) {
+
+                // right mouse button => panning
+                if (!event.isSecondaryButtonDown())
+                    return;
+
+                sceneDragContext.mouseAnchorX = event.getSceneX();
+                sceneDragContext.mouseAnchorY = event.getSceneY();
+
+                sceneDragContext.translateAnchorX = pane.getTranslateX();
+                sceneDragContext.translateAnchorY = pane.getTranslateY();
+
+            }
+
+        };
+
+        private final EventHandler<MouseEvent> onMouseDraggedEventHandler = new EventHandler<>() {
+            public void handle(MouseEvent event) {
+
+                // right mouse button => panning
+                if (!event.isSecondaryButtonDown())
+                    return;
+
+                pane.setTranslateX(sceneDragContext.translateAnchorX + event.getSceneX() - sceneDragContext.mouseAnchorX);
+                pane.setTranslateY(sceneDragContext.translateAnchorY + event.getSceneY() - sceneDragContext.mouseAnchorY);
+
+                event.consume();
+            }
+        };
     }
 }

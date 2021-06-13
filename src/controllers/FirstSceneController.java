@@ -37,6 +37,7 @@ public class FirstSceneController {
 
         boolean inputError = false;
 
+        //Input column empty
         if (textFileName.getText().isEmpty()) {
             errorLabel.setText("Please input the file name!");
         } else {
@@ -54,13 +55,14 @@ public class FirstSceneController {
                 }
 
                 input.close();
-
+                //Input file not found
             } catch (FileNotFoundException e) {
                 inputError = true;
                 System.out.println("File was not found");
                 errorLabel.setText("The file is not found");
             }
 
+            //If not error
             if (!inputError) {
                 System.out.println("NoOfNode: " + noOfNode);
                 System.out.println("MaxCapacity: " + maxCapacity);
